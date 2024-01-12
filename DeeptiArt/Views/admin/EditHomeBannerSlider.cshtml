@@ -1,0 +1,60 @@
+﻿@model DeeptiArt.Models.HomeBannerSliderTbl
+
+@{
+    ViewBag.Title = "Edit Home Banner Slider";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">Forms</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item">
+                            <a href="~/Admin"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Form Layouts</li>
+                    </ol>
+                </nav>
+            </div>
+
+        </div>
+        <!--end breadcrumb-->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h6 class="mb-0 text-uppercase">Edit Home Banner Slider</h6>
+                <hr>
+                <div class="card border-top border-0 border-4 border-primary">
+                    <div class="card-body p-4">
+                        <div class="card-title d-flex align-items-center">
+                            <h5 class="mb-0 text-primary">Edit Home Banner Slider</h5>
+                        </div>
+                        <hr>
+                        @using (Html.BeginForm("EditHomeBannerSlider", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "row g-3" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input value="@Model.BannerImg" name="image" class="form-control" hidden>
+
+                            <div class="col-12">
+                                <label for="image" class="form-label">Banner Image</label>
+                                <div class="input-group">
+                                    <input value="@Model.BannerImg" name="image" class="form-control" type="file" id="image">
+                                    <img src="~/Content/Assets/projectImages/HomeBannerSlider/@Model.BannerImg" class="img-fluid" style="height:60px;width:60px;" />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <button type="submit" class="btn btn-primary"><i class="bx bxs-check-circle"></i> Update</button>
+                                <a href="~/Admin/AddHomeBannerSlider" class="btn btn-outline-primary ms-4"><i class="bx bxs-x-circle"></i> Back</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
